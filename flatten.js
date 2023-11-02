@@ -11,5 +11,17 @@ Array.prototype.flatten = function(arr = []) {
     return result;
 }
 
-let arr = [[1, 'chris'], [3], [3, 4, 5, [1, 'dad', 3]], {obj: 'num1'}]
+let arr = [1, 2, 3, [4, 2, 5, [35, 6, 7]], {obj: 1}]
 console.log(arr.flatten());
+
+function flatten(arr, res = []) {
+    let result = res;
+    for (let i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+            flatten(arr[i], result);
+        } else {
+            result.push(arr[i]);
+        }
+    }
+    return result;
+}
